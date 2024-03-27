@@ -561,7 +561,7 @@ client.urgent		    	$urgentred	$urgentred	$white		$yellowbrown	$yellowbrown
 #####################################
 ## rofi bindings fancy application menu ($mod+d /F9 optional disabled)
 
-bindsym $mod+d exec dmenu_run
+bindsym $mod+d exec rofi -show run -config ~/.config/rofi/config.rasi
 
 #bindsym F9 exec rofi -modi drun -show drun \
 #		-config ~/.config/rofi/rofidmenu.rasi
@@ -569,18 +569,21 @@ bindsym $mod+d exec dmenu_run
 ## rofi bindings for window menu ($mod+t /F10 optional disabled)
 
 bindsym $mod+t exec rofi -show window \
-		-config ~/.config/rofi/rofidmenu.rasi
-
-#bindsym F10 exec rofi -show window \
-#		-config ~/.config/rofi/rofidmenu.rasi
+		-config ~/.config/rofi/config.rasi
 
 ## rofi bindings to manage clipboard (install rofi-greenclip from the AUR)
 
 #exec --no-startup-id greenclip daemon>/dev/null
-#bindsym $mod+c exec --no-startup-id rofi -modi "clipboard:greenclip print" -show clipboard \
+bindsym $mod+c exec --no-startup-id rofi -modi "clipboard:greenclip print" -show clipboard \
 ##exec_always "picom --config ../picom.conf &"
 exec_always xrandr --output DP-1 --left-of eDP-1 --output HDMI-1 --left-of DP-1 --mode 1920x1080 
-exec_always xautolock -time 5 -locker "betterlockscreen -l &" -corners '--'
+exec_always xautolock -time 5 -locker "betterlockscreen -l" -corners '--'
 exec betterlockscreen -w wallpaper.png
+default_border pixel 2
+client.focused #0abdc6 #0abdc6 #0abdc6 #0abdc6 #0abdc6
+client.unfocused #0abdc6 #0abdc6 #0abdc6 #0abdc6 #0abdc6
+client.focused_inactive #0abdc6 #0abdc6 #0abdc6 #0abdc6 #0abdc6
 
+exec sh .config/polybar/launch.sh
+exec picom &
 #-config ~/.config/rofi/rofidmenu.rasfor_window [class="^zoom$"] move container to workspace $ws4, workspace $ws4, floating enablei
