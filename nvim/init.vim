@@ -1,25 +1,40 @@
-call plug#begin('~/.config/nvim/plugged')
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-sensible'
+call plug#begin()
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'catppuccin/vim', { 'as': 'catppuccin' }
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'rose-pine/vim'
-Plug 'stevearc/vim-arduino'
+Plug 'stevearc/oil.nvim'
+Plug 'numToStr/Comment.nvim'
+Plug 'lukas-reineke/indent-blankline.nvim'
+Plug 'nvim-tree/nvim-web-devicons'
+Plug 'kien/ctrlp.vim' 
+Plug 'williamboman/mason.nvim'
+Plug 'folke/noice.nvim'
 call plug#end()
-set hidden
-set number
-set relativenumber
-let g:lightline = {'colorscheme': 'catppuccin_mocha'}
-let g:airline_theme = 'catppuccin_mocha'
-colorscheme mytheme3
-" Change these as desired"
-nnoremap <buffer> <leader>aa <cmd>ArduinoAttach<CR>
-nnoremap <buffer> <leader>av <cmd>ArduinoVerify<CR>
-nnoremap <buffer> <leader>au <cmd>ArduinoUpload<CR>
-nnoremap <buffer> <leader>aus <cmd>ArduinoUploadAndSerial<CR>
-nnoremap <buffer> <leader>as <cmd>ArduinoSerial<CR>
-nnoremap <buffer> <leader>ab <cmd>ArduinoChooseBoard<CR>
-nnoremap <buffer> <leader>ap <cmd>ArduinoChooseProgrammer<CR>
-nnoremap <buffer> <leader>acp <cmd>ArduinoChoosePort<CR>
+
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+
+lua require("oil").setup()
+lua require('Comment').setup()
+lua require("ibl").setup()
+lua require("mason").setup()
+
+lua << EOF
+EOF
+
+set number relativenumber
+
+inoremap <up> <nop>
+vnoremap <up> <nop>
+inoremap <down> <nop>
+vnoremap <down> <nop>
+inoremap <left> <nop>
+vnoremap <right> <nop>
+inoremap <left> <nop>
+vnoremap <right> <nop>
+"b a
+
+"ignore this part
+
+nnoremap <up> <nop>
+nnoremap <down> <nop>
+nnoremap <right> <nop>
+nnoremap <left> <nop>
